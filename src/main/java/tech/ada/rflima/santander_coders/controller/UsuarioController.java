@@ -1,32 +1,34 @@
 package tech.ada.rflima.santander_coders.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 import tech.ada.rflima.santander_coders.model.Usuario;
+import tech.ada.rflima.santander_coders.service.CriarUsuarioService;
 import tech.ada.rflima.santander_coders.service.ObterUsuarioService;
 
 @RestController
 @RequestMapping("/usuarios")
 public class UsuarioController {
 
-//    @Autowired
-//    private ObterUsuarioService service;
+    private final ObterUsuarioService obterUsuarioService;
+    private final CriarUsuarioService criarUsuarioService;
 
-    private final ObterUsuarioService service;
-
-    public UsuarioController(ObterUsuarioService service) {
-        this.service = service;
+    public UsuarioController(ObterUsuarioService obterUsuarioService, CriarUsuarioService criarUsuarioService) {
+        this.obterUsuarioService = obterUsuarioService;
+        this.criarUsuarioService = criarUsuarioService;
     }
 
     @GetMapping("/{id}")
     public Usuario obterUsuarioPorId(@PathVariable Long id) {
-        return service.execute(id);
+        return obterUsuarioService.execute(id);
     }
 
-
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping
+    public Usuario criarUsuario(@RequestBody Usuario usuario) {
+        return criarUsuarioService.executar(usuario);
+    }
 }
 
 
