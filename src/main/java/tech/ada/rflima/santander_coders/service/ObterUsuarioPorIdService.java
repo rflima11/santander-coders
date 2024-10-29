@@ -5,11 +5,11 @@ import tech.ada.rflima.santander_coders.model.Usuario;
 import tech.ada.rflima.santander_coders.repository.UsuarioRepository;
 
 @Service
-public class ObterUsuarioService {
+public class ObterUsuarioPorIdService {
 
     private final UsuarioRepository repository;
 
-    public ObterUsuarioService(UsuarioRepository repository) {
+    public ObterUsuarioPorIdService(UsuarioRepository repository) {
         this.repository = repository;
     }
 

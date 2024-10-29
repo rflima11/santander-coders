@@ -25,6 +25,9 @@ public class Usuario {
     @Column(name = "DATA_HORA_CRIACAO")
     private LocalDateTime dataHoraCriacao;
 
+    @Column(name = "EMAIL")
+    private String email;
+
     public Usuario() {
         this.dataHoraCriacao = LocalDateTime.now();
     }
@@ -34,6 +37,7 @@ public class Usuario {
         this.nome = nome;
         this.cpf = cpf;
         this.idade = idade;
+        this.email = email;
     }
 
     public Long getId() {
@@ -74,5 +78,13 @@ public class Usuario {
 
     public void setDataHoraCriacao(LocalDateTime dataHoraCriacao) {
         this.dataHoraCriacao = dataHoraCriacao;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
