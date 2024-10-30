@@ -4,9 +4,11 @@ import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tech.ada.rflima.santander_coders.dto.request.CriarUsuarioDTO;
 import tech.ada.rflima.santander_coders.dto.response.UsuarioResponseDTO;
+import tech.ada.rflima.santander_coders.exceptions.UsuarioNaoEncontradoException;
 import tech.ada.rflima.santander_coders.model.Usuario;
 import tech.ada.rflima.santander_coders.service.*;
 
@@ -34,8 +36,14 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
-    public Usuario obterUsuarioPorId(@PathVariable Long id) {
-        return obterUsuarioPorIdService.execute(id);
+    public ResponseEntity<Object> obterUsuarioPorId(@PathVariable Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(obterUsuarioPorIdService.execute(id));
+
+//        try {
+//            return ResponseEntity.status(HttpStatus.OK).body(obterUsuarioPorIdService.execute(id));
+//        } catch (UsuarioNaoEncontradoException e) {
+//            return  ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+//        }
     }
 
     @ResponseStatus(HttpStatus.CREATED)

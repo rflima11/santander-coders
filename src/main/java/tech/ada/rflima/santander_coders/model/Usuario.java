@@ -28,16 +28,25 @@ public class Usuario {
     @Column(name = "EMAIL")
     private String email;
 
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "ENDERECO_ID")
+    private Endereco endereco;
+
     public Usuario() {
         this.dataHoraCriacao = LocalDateTime.now();
     }
 
-    public Usuario(Long id, String nome, String cpf, int idade) {
+    public Usuario(Long id,
+                   String nome,
+                   String cpf,
+                   int idade,
+                   Endereco endereco) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.idade = idade;
         this.email = email;
+        this.endereco = endereco;
     }
 
     public Long getId() {
@@ -86,5 +95,13 @@ public class Usuario {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 }

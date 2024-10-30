@@ -1,9 +1,6 @@
 package tech.ada.rflima.santander_coders.dto.request;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import org.hibernate.validator.constraints.br.CPF;
 
 public record CriarUsuarioDTO(
@@ -15,5 +12,9 @@ public record CriarUsuarioDTO(
         @Email(message = "Email não está no formato correto")
         String email,
         @CPF(message = "CPF não está no formato correto")
-        String cpf
+        String cpf,
+        @NotBlank(message = "CEP deve ser informado")
+        @Size(min = 8, max = 8, message = "CEP deve conter oito caracteres")
+        @Pattern(regexp = "^\\d+$")
+        String cep
 ) {}

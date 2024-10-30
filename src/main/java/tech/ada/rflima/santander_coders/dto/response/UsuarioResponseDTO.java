@@ -5,11 +5,16 @@ public class UsuarioResponseDTO {
     private String nome;
     private Integer idade;
     private String cpf;
+    private EnderecoDTO endereco;
 
-    public UsuarioResponseDTO(String nome, Integer idade, String cpf) {
+    public UsuarioResponseDTO(String nome,
+                              Integer idade,
+                              String cpf,
+                              EnderecoDTO endereco) {
         this.nome = nome;
         this.idade = idade;
         this.cpf = cpf;
+        this.endereco = endereco;
     }
 
     public UsuarioResponseDTO() {
@@ -37,5 +42,13 @@ public class UsuarioResponseDTO {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public EnderecoDTO getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(EnderecoDTO endereco) {
+        this.endereco = endereco;
     }
 }
