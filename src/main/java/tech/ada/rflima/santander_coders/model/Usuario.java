@@ -28,6 +28,9 @@ public class Usuario {
     @Column(name = "EMAIL")
     private String email;
 
+    @Column(name = "PASSWORD")
+    private String password;
+
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "ENDERECO_ID")
     private Endereco endereco;
@@ -103,5 +106,13 @@ public class Usuario {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

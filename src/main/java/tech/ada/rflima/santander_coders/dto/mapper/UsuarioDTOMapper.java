@@ -13,6 +13,7 @@ public final class UsuarioDTOMapper {
         entity.setNome(criarUsuarioDTO.nome());
         entity.setEmail(criarUsuarioDTO.email());
         entity.setIdade(criarUsuarioDTO.idade());
+        entity.setPassword(criarUsuarioDTO.password());
         entity.setEndereco(EnderecoDTOMapper.toEntity(enderecoDTO));
         return entity;
     }

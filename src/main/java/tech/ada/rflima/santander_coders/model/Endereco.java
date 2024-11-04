@@ -2,6 +2,7 @@ package tech.ada.rflima.santander_coders.model;
 
 import jakarta.persistence.*;
 
+
 @Entity
 @Table(name = "ENDERECO")
 public class Endereco {
