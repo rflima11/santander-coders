@@ -16,5 +16,8 @@ public record CriarUsuarioDTO(
         @NotBlank(message = "CEP deve ser informado")
         @Size(min = 8, max = 8, message = "CEP deve conter oito caracteres")
         @Pattern(regexp = "^\\d+$")
-        String cep
+        String cep,
+        @NotBlank(message = "Password não pode ser vazio")
+        @Size(min = 8, max = 64, message = "Password deve conter entre 8 a 64 caracteres")
+        String password
 ) {}

@@ -14,7 +14,7 @@ public class ObterUsuarioEmailService {
     }
 
     public Usuario execute(String email) {
-        return repository.encontrarPorEmailNative(email)
+        return repository.encontrarPorEmail(email)
                 .orElseThrow(() -> new RuntimeException(String.format("Não foi possível encontrar usuário com email %s", email)));
     }
 }

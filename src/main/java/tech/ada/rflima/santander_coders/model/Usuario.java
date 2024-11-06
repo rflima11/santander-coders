@@ -28,6 +28,9 @@ public class Usuario {
     @Column(name = "EMAIL")
     private String email;
 
+    @Column(name = "PASSWORD")
+    private String password;
+
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "ENDERECO_ID")
     private Endereco endereco;
@@ -40,6 +43,7 @@ public class Usuario {
                    String nome,
                    String cpf,
                    int idade,
+                   String password,
                    Endereco endereco) {
         this.id = id;
         this.nome = nome;
@@ -47,6 +51,7 @@ public class Usuario {
         this.idade = idade;
         this.email = email;
         this.endereco = endereco;
+        this.password = password;
     }
 
     public Long getId() {
@@ -103,5 +108,13 @@ public class Usuario {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
